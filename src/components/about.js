@@ -6,8 +6,21 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
+import {
+  SparkleIcon,
+  ClockCounterClockwiseIcon,
+  TagIcon,
+  ShieldCheckIcon,
+} from '@phosphor-icons/react';
 
 const TOTAL_PHOTOS = 18;
+
+const features = [
+  { icon: SparkleIcon, text: 'Freestyles únicos — sem precisar de referência.' },
+  { icon: ClockCounterClockwiseIcon, text: 'Mais de 2 anos dedicados ao ofício.' },
+  { icon: TagIcon, text: 'Preço justo pra um resultado premium.' },
+  { icon: ShieldCheckIcon, text: 'Ambiente higienizado e confortável.' },
+];
 
 const galleryImages = Array.from({ length: TOTAL_PHOTOS }, (_, i) => ({
   src: `/clientes/cliente${i + 1}.png`,
@@ -47,93 +60,23 @@ export default function About() {
             Cleiton Calixto
           </h2>
 
-          <p className="mt-5 text-base leading-relaxed text-[#EDE6D6]/80">
-            Cleiton fundou a barbearia aos 19 anos, depois de dois anos dedicados
-            ao ofício — tempo suficiente pra desenvolver um estilo só dele. Ele
-            cria freestyles originais sem precisar de referência: o desenho
-            nasce na hora, direto na régua e na navalha. Se você já chega com
-            uma ideia específica, ele reproduz com a mesma fidelidade.
-          </p>
-          <p className="mt-4 text-base leading-relaxed text-[#EDE6D6]/80">
-            O espaço foi pensado pra ser confortável do início ao fim do
-            atendimento, com a higienização que uma barbearia séria exige —
-            instrumentos esterilizados, ambiente limpo, sem atalho. E tudo isso
-            com um preço que cabe no bolso, sem abrir mão da qualidade do
-            resultado.
-          </p>
-
-          {/* Selos rápidos */}
-          <dl className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-3">
-            <div>
-              <svg
-                className="h-6 w-6 text-[#B08D57]"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
+          <ul className="mt-10 border-t border-[#EDE6D6]/10">
+            {features.map(({ icon: FeatureIcon, text }) => (
+              <li
+                key={text}
+                className="flex items-start gap-4 border-b border-[#EDE6D6]/10 py-5"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6l7-3z"
+                <FeatureIcon
+                  size={26}
+                  weight="thin"
+                  className="mt-1 shrink-0 text-[#B08D57]"
                 />
-                <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4" />
-              </svg>
-              <dt className="mt-2 text-sm font-medium text-[#EDE6D6]">
-                Higienização rigorosa
-              </dt>
-              <dd className="mt-1 text-sm text-[#EDE6D6]/60">
-                Instrumentos esterilizados a cada atendimento
-              </dd>
-            </div>
-
-            <div>
-              <svg
-                className="h-6 w-6 text-[#B08D57]"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M20.59 13.41L11 3.83A2 2 0 009.59 3.24L4 3a1 1 0 00-1 1l.24 5.59a2 2 0 00.59 1.41l9.58 9.58a2 2 0 002.83 0l4.35-4.35a2 2 0 000-2.82z"
-                />
-                <circle cx="7.5" cy="7.5" r="1.25" fill="currentColor" stroke="none" />
-              </svg>
-              <dt className="mt-2 text-sm font-medium text-[#EDE6D6]">Preço acessível</dt>
-              <dd className="mt-1 text-sm text-[#EDE6D6]/60">
-                Qualidade premium, sem pesar no bolso
-              </dd>
-            </div>
-
-            <div>
-              <svg
-                className="h-6 w-6 text-[#B08D57]"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="1.5"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M4 10.5L12 4l8 6.5" />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M5.5 9.5V19a1 1 0 001 1h11a1 1 0 001-1V9.5"
-                />
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M9.5 20v-5a1 1 0 011-1h3a1 1 0 011 1v5"
-                />
-              </svg>
-              <dt className="mt-2 text-sm font-medium text-[#EDE6D6]">Ambiente confortável</dt>
-              <dd className="mt-1 text-sm text-[#EDE6D6]/60">
-                Espaço pensado pra você relaxar
-              </dd>
-            </div>
-          </dl>
+                <span className="text-xl font-medium leading-snug text-[#EDE6D6] sm:text-2xl">
+                  {text}
+                </span>
+              </li>
+            ))}
+          </ul>
         </div>
 
         {/* Galeria em carrossel — arrastável, com autoplay */}
