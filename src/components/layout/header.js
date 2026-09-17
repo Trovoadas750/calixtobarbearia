@@ -4,9 +4,9 @@ import { useState } from 'react';
 import Link from 'next/link';
 
 const navLinks = [
-  { label: 'Sobre', href: '#sobre' },
-  { label: 'Agendar horário', href: '#agendamento', cta: true },
   { label: 'Trabalhos', href: '#trabalhos' },
+  { label: 'Agendar horário', href: '#agendamento', cta: true },
+  { label: 'Localização', href: '#localizacao' },
 ];
 
 export default function Header() {

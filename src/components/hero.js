@@ -19,11 +19,6 @@ export default function Hero() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches;
-    if (prefersReducedMotion) return;
-
     const timer = setInterval(() => {
       setCurrent((prev) => (prev + 1) % slides.length);
     }, SLIDE_DURATION);
@@ -42,7 +37,7 @@ export default function Hero() {
           fill
           priority={index === 0}
           sizes="100vw"
-          className={`object-cover object-center transition-opacity duration-[3000ms] ease-in-out motion-reduce:transition-none ${
+          className={`object-cover object-center transition-opacity duration-[3000ms] ease-in-out ${
             index === current ? 'opacity-100' : 'opacity-0'
           }`}
         />
@@ -54,10 +49,27 @@ export default function Hero() {
       {/* Conteúdo */}
       <div className="relative z-10 mx-auto w-full max-w-6xl px-6 pb-14 pt-32 text-center sm:pb-20 md:pb-24 md:text-left">
         <h1 className="text-4xl font-semibold leading-tight text-[#EDE6D6] sm:text-5xl md:text-6xl">
-          Cada corte tem assinatura.
+          Cada corte molda sua personalidade.
         </h1>
-        <p className="mx-auto mt-4 max-w-md text-base text-[#EDE6D6]/80 md:mx-0 md:text-lg">
-          Freestyles originais na navalha, feitos à mão em Ourinhos-SP.
+        <p className="mx-auto mt-4 max-w-md text-base text-[#EDE6D6]/85 md:mx-0 md:text-lg">
+          Freestyles autorais, desenhados na hora e inclusos em cada corte.
+        </p>
+        <p className="mx-auto mt-3 flex max-w-md items-center justify-center gap-2 text-sm text-[#EDE6D6]/60 md:mx-0 md:justify-start">
+          <svg
+            className="h-4 w-4 shrink-0"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              d="M12 21s7-7.58 7-12a7 7 0 10-14 0c0 4.42 7 12 7 12z"
+            />
+            <circle cx="12" cy="9" r="2.5" />
+          </svg>
+          Rua Doutor Antônio Prado, 1017 – Centro, Ourinhos-SP
         </p>
 
         <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:justify-center md:justify-start">
